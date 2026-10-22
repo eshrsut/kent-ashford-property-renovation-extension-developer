@@ -1,5 +1,5 @@
 import { localPhotos } from "./localPhoto";
-import { curatedPhoto } from "./curatedPhotos";
+import { curatedPhotosFor } from "./curatedPhotos";
 
 export type GalleryPhoto = { src: string; alt: string };
 
@@ -30,12 +30,14 @@ export function resolveGallery(opts: {
     };
   }
 
-  const fallback =
-    (opts.topic && curatedPhoto(opts.topic)) ||
-    `https://picsum.photos/seed/${encodeURIComponent(opts.seed)}/1200/900`;
+  const curated = opts.topic ? curatedPhotosFor(opts.topic) : [];
+  const fallbackSrcs =
+    curated.length > 0
+      ? curated
+      : [`https://picsum.photos/seed/${encodeURIComponent(opts.seed)}/1200/900`];
 
   return {
-    photos: [{ src: fallback, alt: opts.alt }],
+    photos: fallbackSrcs.map((src) => ({ src, alt: opts.alt })),
     isSample: true,
   };
 }

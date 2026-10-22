@@ -42,3 +42,18 @@ export function localPhotos(category: string, slug: string, max = 12): string[] 
   }
   return found;
 }
+
+/**
+ * Looks for `public/images/<category>/<slug>-before.<ext>` — pairs with
+ * the main `<slug>.<ext>` photo as the "after" shot for a before/after
+ * slider. Returns undefined unless both a before and an after photo exist.
+ */
+export function localBeforeAfter(
+  category: string,
+  slug: string
+): { before: string; after: string } | undefined {
+  const before = findFile(category, `${slug}-before`);
+  const after = findFile(category, slug);
+  if (!before || !after) return undefined;
+  return { before, after };
+}
