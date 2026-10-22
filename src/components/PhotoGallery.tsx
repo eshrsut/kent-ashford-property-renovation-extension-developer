@@ -19,23 +19,43 @@ export default function PhotoGallery({
   rounded?: string;
   priority?: boolean;
 }) {
+  const hasMultiple = photos.length > 1;
+
+  const [coverIndex, setCoverIndex] = useState(0);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const hasMultiple = photos.length > 1;
 
   const close = () => setOpenIndex(null);
   const open = (index: number) => {
     setIsPlaying(true);
+    setCoverIndex(index);
     setOpenIndex(index);
   };
-  const showNext = () =>
-    setOpenIndex((i) => (i === null ? null : (i + 1) % photos.length));
-  const showPrev = () =>
-    setOpenIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length));
+  const showNext = () => {
+    if (openIndex === null) return;
+    const next = (openIndex + 1) % photos.length;
+    setCoverIndex(next);
+    setOpenIndex(next);
+  };
+  const showPrev = () => {
+    if (openIndex === null) return;
+    const prev = (openIndex - 1 + photos.length) % photos.length;
+    setCoverIndex(prev);
+    setOpenIndex(prev);
+  };
   const manualNav = (fn: () => void) => {
     setIsPlaying(false);
     fn();
   };
+
+  // Cycle the card's cover photo on its own, even before the lightbox opens.
+  useEffect(() => {
+    if (!hasMultiple || openIndex !== null) return;
+    const id = window.setInterval(() => {
+      setCoverIndex((i) => (i + 1) % photos.length);
+    }, AUTOPLAY_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [hasMultiple, openIndex, photos.length]);
 
   // Keyboard controls + lock page scroll while the lightbox is open.
   useEffect(() => {
@@ -67,14 +87,14 @@ export default function PhotoGallery({
   }, [openIndex, isPlaying, hasMultiple, photos.length]);
 
   if (photos.length === 0) return null;
-  const cover = photos[0];
+  const cover = photos[coverIndex];
 
   return (
     <>
       <div className={`relative overflow-hidden ${rounded} ${className}`}>
         <button
           type="button"
-          onClick={() => open(0)}
+          onClick={() => open(coverIndex)}
           aria-label={`View ${cover.alt} full screen`}
           className="group absolute inset-0 block h-full w-full cursor-zoom-in"
         >
@@ -100,7 +120,7 @@ export default function PhotoGallery({
 
         {hasMultiple && (
           <span className="pointer-events-none absolute right-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-xs font-medium text-white">
-            1 / {photos.length}
+            {coverIndex + 1} / {photos.length}
           </span>
         )}
       </div>
@@ -111,9 +131,14 @@ export default function PhotoGallery({
             <button
               key={photo.src + i}
               type="button"
-              onClick={() => open(i)}
+              onClick={() => {
+                setCoverIndex(i);
+                open(i);
+              }}
               aria-label={`View photo ${i + 1} of ${photos.length}`}
-              className="h-14 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-slate-200"
+              className={`h-14 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition ${
+                i === coverIndex ? "border-amber-500" : "border-slate-200"
+              }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={photo.src} alt={photo.alt} className="h-full w-full object-cover" />
@@ -126,7 +151,7 @@ export default function PhotoGallery({
         <div
           role="dialog"
           aria-modal="true"
-          onClick={close}
+          onMouseDown={close}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
         >
           <button
@@ -145,7 +170,7 @@ export default function PhotoGallery({
             <>
               <button
                 type="button"
-                onClick={(e) => {
+                onMouseDown={(e) => {
                   e.stopPropagation();
                   manualNav(showPrev);
                 }}
@@ -156,7 +181,7 @@ export default function PhotoGallery({
               </button>
               <button
                 type="button"
-                onClick={(e) => {
+                onMouseDown={(e) => {
                   e.stopPropagation();
                   manualNav(showNext);
                 }}
@@ -168,17 +193,17 @@ export default function PhotoGallery({
             </>
           )}
 
+          {/* Clicking the photo itself also closes — only the controls above opt out. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={photos[openIndex].src}
             alt={photos[openIndex].alt}
-            onClick={(e) => e.stopPropagation()}
             className="max-h-[90vh] max-w-[95vw] object-contain"
           />
 
           {hasMultiple && (
             <div
-              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white"
             >
               <button
