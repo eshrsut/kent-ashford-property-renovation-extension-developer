@@ -8,7 +8,7 @@
  */
 export const curatedPhotos: Record<string, string[]> = {
   "new-build-homes": [
-    "https://images.pexels.com/photos/4832530/pexels-photo-4832530.jpeg",
+    "https://images.pexels.com/photos/9969055/pexels-photo-9969055.jpeg",
     "https://images.pexels.com/photos/534228/pexels-photo-534228.jpeg",
   ],
   extensions: [
@@ -16,14 +16,14 @@ export const curatedPhotos: Record<string, string[]> = {
     "https://images.pexels.com/photos/30924413/pexels-photo-30924413.jpeg",
   ],
   "roof-loft-conversions": [
-    "https://images.pexels.com/photos/33404080/pexels-photo-33404080.jpeg",
+    "https://images.pexels.com/photos/6628274/pexels-photo-6628274.jpeg",
     "https://images.pexels.com/photos/31763538/pexels-photo-31763538.jpeg",
     "https://images.pexels.com/photos/32050401/pexels-photo-32050401.jpeg",
   ],
   "renovation-refurbishment": [
+    "https://images.pexels.com/photos/11014232/pexels-photo-11014232.jpeg",
+    "https://images.pexels.com/photos/13657362/pexels-photo-13657362.jpeg",
     "https://images.pexels.com/photos/23358344/pexels-photo-23358344.jpeg",
-    "https://images.pexels.com/photos/4756489/pexels-photo-4756489.jpeg",
-    "https://images.pexels.com/photos/36035072/pexels-photo-36035072.jpeg",
   ],
   "painting-decorating": [
     "https://images.pexels.com/photos/6474133/pexels-photo-6474133.jpeg",

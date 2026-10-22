@@ -1,23 +1,46 @@
 import { Star } from "lucide-react";
 
-const placeholderReviews = [
+// These are EXAMPLE reviews for layout purposes only — not real customer
+// feedback. Each is tagged "Example review" on the page itself so nothing
+// here could be mistaken for a genuine testimonial if this goes live
+// before real reviews are added (fabricated reviews presented as genuine
+// are against UK consumer protection rules, so this stays labelled).
+const exampleReviews = [
   {
     quote:
-      "Placeholder review — replace with a real quote from Google, Checkatrade or Trustpilot once you have reviews to show.",
-    name: "Customer name",
-    project: "Project type, Town",
+      "They managed the whole extension from the first site visit to the final coat of paint. Communication was spot on and they left the place spotless every day.",
+    name: "David Carter",
+    project: "Rear extension, Ashford",
   },
   {
     quote:
-      "Placeholder review — swap this for genuine feedback from a past client about communication, tidiness and finish quality.",
-    name: "Customer name",
-    project: "Project type, Town",
+      "Had the loft converted into a bedroom and ensuite. The team was tidy, turned up when they said they would, and the price didn't move from the original quote.",
+    name: "Sarah Whitfield",
+    project: "Loft conversion, Canterbury",
   },
   {
     quote:
-      "Placeholder review — three or four short, specific quotes build far more trust than generic marketing copy.",
-    name: "Customer name",
-    project: "Project type, Town",
+      "Full renovation of a Victorian terrace we'd just bought. They talked us through every decision and the finish quality was better than we expected.",
+    name: "James Okafor",
+    project: "Full renovation, Maidstone",
+  },
+  {
+    quote:
+      "Repainted the whole exterior after some render repairs. Neat edges, no mess on the patio, and they matched the colour exactly to what we asked for.",
+    name: "Emily Hartley",
+    project: "Exterior painting, Whitstable",
+  },
+  {
+    quote:
+      "New engineered oak flooring throughout the ground floor. Quick, clean job and they moved all the furniture back afterwards without being asked.",
+    name: "Michael Osei",
+    project: "Flooring, Bromley",
+  },
+  {
+    quote:
+      "Used them for a new build on a plot we'd held onto for years. Genuinely project-managed it — we only ever had one phone number to call.",
+    name: "Lucy Fairweather",
+    project: "New build home, Folkestone",
   },
 ];
 
@@ -30,17 +53,21 @@ export default function Testimonials() {
             What our customers say
           </h2>
           <p className="mt-3 text-slate-600">
-            Replace these placeholders with real reviews from your customers
-            before launch.
+            Example reviews shown for layout only — swap these for real
+            customer feedback (Google, Checkatrade, Trustpilot) before this
+            site goes live.
           </p>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {placeholderReviews.map((review, i) => (
+          {exampleReviews.map((review, i) => (
             <div
               key={i}
-              className="flex flex-col gap-4 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6"
+              className="relative flex flex-col gap-4 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6"
             >
+              <span className="absolute right-4 top-4 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
+                Example review
+              </span>
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, star) => (
                   <Star key={star} className="h-4 w-4 fill-current" />
