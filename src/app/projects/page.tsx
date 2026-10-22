@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PhotoGallery from "@/components/PhotoGallery";
 import CTASection from "@/components/CTASection";
 import { projects } from "@/data/projects";
 import { getServiceBySlug } from "@/data/services";
 import { site } from "@/data/site";
-import { localPhoto } from "@/lib/localPhoto";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export const metadata: Metadata = {
   title: "Our Projects",
@@ -32,20 +32,23 @@ export default function ProjectsPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => {
               const service = getServiceBySlug(project.serviceSlug);
+              const gallery = resolveGallery({
+                category: "projects",
+                slug: project.slug,
+                alt: project.imagePrompt,
+                topic: project.serviceSlug,
+                seed: `project-${project.slug}`,
+              });
               return (
                 <div
                   key={project.slug}
                   className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
                 >
-                  <PlaceholderImage
-                    seed={`project-${project.slug}`}
-                    topic={project.serviceSlug}
-                    label={project.imagePrompt}
-                    realSrc={localPhoto("projects", project.slug)}
+                  <PhotoGallery
+                    photos={gallery.photos}
+                    isSample={gallery.isSample}
                     className="aspect-[4/3] w-full"
                     rounded="rounded-none"
-                    width={700}
-                    height={525}
                   />
                   <div className="p-5">
                     {service && (

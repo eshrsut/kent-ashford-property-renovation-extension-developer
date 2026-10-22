@@ -4,6 +4,11 @@ Save a photo with the **exact project slug** as the filename (`.jpg`,
 `.jpeg`, `.png` or `.webp` all work) and the site will automatically use it
 instead of the sample photo — no code changes needed.
 
+**Multiple photos for one project?** Add `-2`, `-3`, etc. after the slug:
+`ashford-rear-extension.jpg`, `ashford-rear-extension-2.jpg`,
+`ashford-rear-extension-3.jpg`. They'll show as a gallery with thumbnails,
+and visitors can click any photo to view it full-screen.
+
 | Project | Filename to use |
 |---|---|
 | Rear Kitchen Extension, Ashford | `ashford-rear-extension.jpg` |

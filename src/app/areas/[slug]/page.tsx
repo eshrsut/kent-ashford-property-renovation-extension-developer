@@ -4,10 +4,11 @@ import { notFound } from "next/navigation";
 import { MapPin } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import ServiceCard from "@/components/ServiceCard";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PhotoGallery from "@/components/PhotoGallery";
 import { getTownBySlug, towns } from "@/data/towns";
 import { services } from "@/data/services";
 import { site } from "@/data/site";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export function generateStaticParams() {
   return towns.map((town) => ({ slug: town.slug }));
@@ -35,6 +36,14 @@ export default async function TownPage({
   const { slug } = await params;
   const town = getTownBySlug(slug);
   if (!town) notFound();
+
+  const townPhoto = resolveGallery({
+    category: "areas",
+    slug: town.slug,
+    alt: `Completed project photo from ${town.name}`,
+    topic: "team",
+    seed: `town-${town.slug}`,
+  });
 
   return (
     <>
@@ -81,13 +90,10 @@ export default async function TownPage({
             </Link>
           </div>
 
-          <PlaceholderImage
-            seed={`town-${town.slug}`}
-            topic="team"
-            label={`Completed project photo from ${town.name}`}
+          <PhotoGallery
+            photos={townPhoto.photos}
+            isSample={townPhoto.isSample}
             className="aspect-[4/3] w-full"
-            width={900}
-            height={700}
           />
         </div>
       </section>

@@ -3,12 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PhotoGallery from "@/components/PhotoGallery";
 import ServiceIcon from "@/components/ServiceIcon";
 import { getServiceBySlug, services } from "@/data/services";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
-import { localPhoto } from "@/lib/localPhoto";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -38,6 +38,14 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const relatedProjects = projects.filter((p) => p.serviceSlug === service.slug);
+
+  const serviceGallery = resolveGallery({
+    category: "services",
+    slug: service.slug,
+    alt: service.imagePrompt,
+    topic: service.slug,
+    seed: `service-${service.slug}`,
+  });
 
   return (
     <>
@@ -79,13 +87,10 @@ export default async function ServiceDetailPage({
             </Link>
           </div>
 
-          <PlaceholderImage
-            seed={`service-${service.slug}`}
-            topic={service.slug}
-            label={service.imagePrompt}
+          <PhotoGallery
+            photos={serviceGallery.photos}
+            isSample={serviceGallery.isSample}
             className="aspect-[4/3] w-full"
-            width={900}
-            height={700}
           />
         </div>
       </section>
@@ -97,27 +102,32 @@ export default async function ServiceDetailPage({
               Recent {service.title.toLowerCase()} projects
             </h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedProjects.map((project) => (
-                <div
-                  key={project.slug}
-                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
-                >
-                  <PlaceholderImage
-                    seed={`project-${project.slug}`}
-                    topic={project.serviceSlug}
-                    label={project.imagePrompt}
-                    realSrc={localPhoto("projects", project.slug)}
-                    className="aspect-[4/3] w-full"
-                    rounded="rounded-none"
-                    width={700}
-                    height={525}
-                  />
-                  <div className="p-4">
-                    <p className="font-semibold text-slate-900">{project.title}</p>
-                    <p className="text-sm text-slate-500">{project.location}</p>
+              {relatedProjects.map((project) => {
+                const gallery = resolveGallery({
+                  category: "projects",
+                  slug: project.slug,
+                  alt: project.imagePrompt,
+                  topic: project.serviceSlug,
+                  seed: `project-${project.slug}`,
+                });
+                return (
+                  <div
+                    key={project.slug}
+                    className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                  >
+                    <PhotoGallery
+                      photos={gallery.photos}
+                      isSample={gallery.isSample}
+                      className="aspect-[4/3] w-full"
+                      rounded="rounded-none"
+                    />
+                    <div className="p-4">
+                      <p className="font-semibold text-slate-900">{project.title}</p>
+                      <p className="text-sm text-slate-500">{project.location}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

@@ -1,9 +1,18 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { site } from "@/data/site";
-import PlaceholderImage from "./PlaceholderImage";
+import PhotoGallery from "./PhotoGallery";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export default function Hero() {
+  const hero = resolveGallery({
+    category: "hero",
+    slug: "banner",
+    alt: "Completed new build or renovation project photo",
+    topic: "new-build-homes",
+    seed: "hero-new-build-home",
+  });
+
   return (
     <section className="bg-slate-900">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-2 lg:py-24">
@@ -34,13 +43,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <PlaceholderImage
-          seed="hero-new-build-home"
-          topic="new-build-homes"
-          label="Completed new build or renovation project photo"
+        <PhotoGallery
+          photos={hero.photos}
+          isSample={hero.isSample}
           className="aspect-[4/3] w-full lg:aspect-[5/4]"
-          width={1000}
-          height={800}
           priority
         />
       </div>

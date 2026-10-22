@@ -6,10 +6,11 @@ import TrustBar from "@/components/TrustBar";
 import ServiceCard from "@/components/ServiceCard";
 import CTASection from "@/components/CTASection";
 import Testimonials from "@/components/Testimonials";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PhotoGallery from "@/components/PhotoGallery";
 import { services } from "@/data/services";
 import { regionOrder, serviceAreaSummary, townsByRegion } from "@/data/towns";
 import { site } from "@/data/site";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export const metadata: Metadata = {
   title: `${site.name} | Builders in London, Kent & East Kent`,
@@ -17,6 +18,14 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const progress = resolveGallery({
+    category: "hero",
+    slug: "progress",
+    alt: "Project in progress — team on site photo",
+    topic: "extensions",
+    seed: "site-progress-build",
+  });
+
   return (
     <>
       <Hero />
@@ -44,13 +53,10 @@ export default function Home() {
 
       <section className="bg-slate-50">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <PlaceholderImage
-            seed="site-progress-build"
-            topic="extensions"
-            label="Project in progress — team on site photo"
+          <PhotoGallery
+            photos={progress.photos}
+            isSample={progress.isSample}
             className="aspect-[4/3] w-full order-last lg:order-first"
-            width={900}
-            height={700}
           />
           <div>
             <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">

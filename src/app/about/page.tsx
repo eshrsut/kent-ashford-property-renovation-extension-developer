@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Award, HardHat, ShieldCheck, Users } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import PhotoGallery from "@/components/PhotoGallery";
 import { site } from "@/data/site";
+import { resolveGallery } from "@/lib/resolvePhotos";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -34,6 +35,13 @@ const values = [
 
 export default function AboutPage() {
   const yearsTrading = new Date().getFullYear() - site.foundedYear;
+  const team = resolveGallery({
+    category: "about",
+    slug: "team",
+    alt: "Team photo on a current project site",
+    topic: "team",
+    seed: "about-team-site",
+  });
 
   return (
     <>
@@ -51,13 +59,10 @@ export default function AboutPage() {
 
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <PlaceholderImage
-            seed="about-team-site"
-            topic="team"
-            label="Team photo on a current project site"
+          <PhotoGallery
+            photos={team.photos}
+            isSample={team.isSample}
             className="aspect-[4/3] w-full"
-            width={900}
-            height={700}
           />
           <div>
             <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
