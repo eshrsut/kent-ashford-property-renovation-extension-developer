@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import TawkChat from "@/components/TawkChat";
 import { site } from "@/data/site";
 import { towns } from "@/data/towns";
 import "./globals.css";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <TawkChat />
       </body>
     </html>
   );

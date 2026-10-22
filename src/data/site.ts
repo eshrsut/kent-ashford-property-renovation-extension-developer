@@ -28,6 +28,14 @@ export const site = {
     linkedin: "#",
   },
   foundedYear: 2008,
+  // Sign up free at tawk.to, then paste your Property ID and Widget ID
+  // here (Admin > Channels > Chat Widget > your widget's embed code has
+  // both, as the two path segments in the embed.tawk.to script URL).
+  // Leave either blank to keep the live-chat widget off.
+  tawkTo: {
+    propertyId: "",
+    widgetId: "",
+  },
 };
 
 export const navLinks = [
