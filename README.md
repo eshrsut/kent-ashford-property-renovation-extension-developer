@@ -1,4 +1,4 @@
-# Kent & Ashford Developments — website
+# Mori Developers — website
 
 A Next.js (App Router, TypeScript, Tailwind CSS v4) marketing site for a
 construction, renovation and extension business covering **London, East

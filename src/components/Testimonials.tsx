@@ -63,11 +63,8 @@ export default function Testimonials() {
           {exampleReviews.map((review, i) => (
             <div
               key={i}
-              className="relative flex flex-col gap-4 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6"
+              className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6"
             >
-              <span className="absolute right-4 top-4 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
-                Example review
-              </span>
               <div className="flex gap-1 text-amber-500">
                 {Array.from({ length: 5 }).map((_, star) => (
                   <Star key={star} className="h-4 w-4 fill-current" />

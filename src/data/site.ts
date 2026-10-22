@@ -2,8 +2,8 @@ export const site = {
   // Placeholder — replace with your real domain once you have one, so
   // metadata, the sitemap and canonical URLs point at the live site.
   url: "https://www.yourdomain.co.uk",
-  name: "Kent & Ashford Developments",
-  shortName: "K&A Developments",
+  name: "Mori Developers",
+  shortName: "Mori Developers",
   tagline: "New Builds, Extensions & Renovations across London, Kent & East Kent",
   description:
     "Family-run builders based in Ashford, Kent, delivering new build homes, extensions, roof conversions, renovations, painting and flooring across London, East Kent and the wider county.",

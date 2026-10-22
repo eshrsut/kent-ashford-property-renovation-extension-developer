@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500 text-sm font-bold text-slate-900">
-              K&A
+              MD
             </span>
             <span className="text-base font-semibold text-white">{site.name}</span>
           </div>
