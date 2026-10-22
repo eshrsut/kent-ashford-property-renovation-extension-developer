@@ -46,6 +46,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
           <PlaceholderImage
             seed="site-progress-build"
+            topic="extensions"
             label="Project in progress — team on site photo"
             className="aspect-[4/3] w-full order-last lg:order-first"
             width={900}

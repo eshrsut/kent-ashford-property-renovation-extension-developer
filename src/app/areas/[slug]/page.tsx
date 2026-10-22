@@ -83,6 +83,7 @@ export default async function TownPage({
 
           <PlaceholderImage
             seed={`town-${town.slug}`}
+            topic="team"
             label={`Completed project photo from ${town.name}`}
             className="aspect-[4/3] w-full"
             width={900}

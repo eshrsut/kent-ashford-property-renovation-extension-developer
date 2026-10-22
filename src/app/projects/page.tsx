@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection";
 import { projects } from "@/data/projects";
 import { getServiceBySlug } from "@/data/services";
 import { site } from "@/data/site";
+import { localPhoto } from "@/lib/localPhoto";
 
 export const metadata: Metadata = {
   title: "Our Projects",
@@ -38,7 +39,9 @@ export default function ProjectsPage() {
                 >
                   <PlaceholderImage
                     seed={`project-${project.slug}`}
+                    topic={project.serviceSlug}
                     label={project.imagePrompt}
+                    realSrc={localPhoto("projects", project.slug)}
                     className="aspect-[4/3] w-full"
                     rounded="rounded-none"
                     width={700}

@@ -53,6 +53,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
           <PlaceholderImage
             seed="about-team-site"
+            topic="team"
             label="Team photo on a current project site"
             className="aspect-[4/3] w-full"
             width={900}

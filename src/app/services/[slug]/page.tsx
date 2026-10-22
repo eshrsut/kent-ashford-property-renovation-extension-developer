@@ -8,6 +8,7 @@ import ServiceIcon from "@/components/ServiceIcon";
 import { getServiceBySlug, services } from "@/data/services";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
+import { localPhoto } from "@/lib/localPhoto";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -80,6 +81,7 @@ export default async function ServiceDetailPage({
 
           <PlaceholderImage
             seed={`service-${service.slug}`}
+            topic={service.slug}
             label={service.imagePrompt}
             className="aspect-[4/3] w-full"
             width={900}
@@ -102,7 +104,9 @@ export default async function ServiceDetailPage({
                 >
                   <PlaceholderImage
                     seed={`project-${project.slug}`}
+                    topic={project.serviceSlug}
                     label={project.imagePrompt}
+                    realSrc={localPhoto("projects", project.slug)}
                     className="aspect-[4/3] w-full"
                     rounded="rounded-none"
                     width={700}

@@ -36,6 +36,7 @@ export default function Hero() {
 
         <PlaceholderImage
           seed="hero-new-build-home"
+          topic="new-build-homes"
           label="Completed new build or renovation project photo"
           className="aspect-[4/3] w-full lg:aspect-[5/4]"
           width={1000}

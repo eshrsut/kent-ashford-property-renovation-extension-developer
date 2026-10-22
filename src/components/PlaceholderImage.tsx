@@ -1,10 +1,19 @@
 import Image from "next/image";
+import { curatedPhoto } from "@/lib/curatedPhotos";
 
 type PlaceholderImageProps = {
-  /** Stable seed so the same slot always gets the same sample photo. */
+  /** Stable seed so the same slot always gets a consistent fallback photo. */
   seed: string;
   /** Short description of what real photo should replace this sample. */
   label: string;
+  /** A real uploaded photo's URL — when set, this replaces the sample entirely. */
+  realSrc?: string;
+  /**
+   * Category key (a service slug, or "team") used to pick a relevant,
+   * freely-licensed sample construction photo. Falls back to a random
+   * placeholder photo if there's no curated match for this topic.
+   */
+  topic?: string;
   className?: string;
   width?: number;
   height?: number;
@@ -15,18 +24,37 @@ type PlaceholderImageProps = {
 export default function PlaceholderImage({
   seed,
   label,
+  realSrc,
+  topic,
   className = "",
   width = 800,
   height = 600,
   priority = false,
   rounded = "rounded-2xl",
 }: PlaceholderImageProps) {
-  const src = `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
+  if (realSrc) {
+    return (
+      <div className={`relative overflow-hidden ${rounded} ${className}`}>
+        <Image
+          src={realSrc}
+          alt={label}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
+  const sample =
+    (topic && curatedPhoto(topic)) ||
+    `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
 
   return (
     <div className={`group relative overflow-hidden ${rounded} ${className}`}>
       <Image
-        src={src}
+        src={sample}
         alt={label}
         fill
         priority={priority}
