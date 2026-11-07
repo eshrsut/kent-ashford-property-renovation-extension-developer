@@ -37,7 +37,7 @@ export default function AboutPage() {
   const team = resolveGallery({
     category: "about",
     slug: "team",
-    alt: "Anirudhsinh Mori, founder of Mori Builders",
+    alt: "Team photo on a current project site",
     topic: "team",
     seed: "about-team-site",
   });
@@ -58,18 +58,11 @@ export default function AboutPage() {
 
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
-          <div className="mx-auto w-full max-w-sm">
-            <PhotoGallery
-              photos={team.photos}
-              isSample={team.isSample}
-              className="aspect-[3/4] w-full"
-            />
-            {!team.isSample && (
-              <p className="mt-3 text-center text-sm font-medium text-slate-600">
-                Anirudhsinh Mori — Founder, {site.name}
-              </p>
-            )}
-          </div>
+          <PhotoGallery
+            photos={team.photos}
+            isSample={team.isSample}
+            className="aspect-[4/3] w-full"
+          />
           <div>
             <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
               Builders who manage the whole project, not just their trade
