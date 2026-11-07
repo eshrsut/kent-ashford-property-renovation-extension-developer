@@ -6,7 +6,15 @@ import { towns } from "@/data/towns";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/services", "/areas", "/projects", "/about", "/contact"];
+  const staticRoutes = [
+    "",
+    "/services",
+    "/areas",
+    "/projects",
+    "/for-contractors",
+    "/about",
+    "/contact",
+  ];
 
   const routes = [
     ...staticRoutes,
