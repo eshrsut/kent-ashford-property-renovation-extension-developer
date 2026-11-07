@@ -7,7 +7,7 @@ import { resolveGallery } from "@/lib/resolvePhotos";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `About ${site.name}, builders covering London, East Kent and Kent.`,
+  description: `About ${site.name}, multi-trade construction and property services covering Kent and Greater London.`,
 };
 
 const values = [
@@ -29,12 +29,11 @@ const values = [
   {
     icon: Users,
     title: "A trusted team of trades",
-    body: "In-house builders alongside vetted electricians, plumbers and plasterers we've worked with for years.",
+    body: "In-house builders alongside vetted electricians, plumbers and plasterers across all 30 of our services.",
   },
 ];
 
 export default function AboutPage() {
-  const yearsTrading = new Date().getFullYear() - site.foundedYear;
   const team = resolveGallery({
     category: "about",
     slug: "team",
@@ -51,8 +50,8 @@ export default function AboutPage() {
             About {site.name}
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-slate-300">
-            {yearsTrading}+ years building, extending and renovating homes
-            across London, East Kent and Kent.
+            Building, extending and renovating homes and commercial
+            properties across Kent and Greater London.
           </p>
         </div>
       </section>
@@ -76,8 +75,8 @@ export default function AboutPage() {
               a kitchen extension, or a full property renovation.
             </p>
             <p className="mt-4 leading-relaxed text-slate-600">
-              We work across London, East Kent and the rest of Kent, with most
-              of our projects based around our home patch of Ashford and the
+              We work across Kent and Greater London, with most of our
+              projects based around our home patch of Ashford and the
               surrounding towns.
             </p>
           </div>

@@ -1,13 +1,11 @@
-import { ShieldCheck, Award, Clock, MapPin } from "lucide-react";
-import { site } from "@/data/site";
+import { ShieldCheck, Award, HardHat, MapPin } from "lucide-react";
 
 export default function TrustBar() {
-  const yearsTrading = new Date().getFullYear() - site.foundedYear;
   const items = [
-    { icon: Clock, label: `${yearsTrading}+ years building & renovating` },
+    { icon: HardHat, label: "Skilled, experienced tradespeople" },
     { icon: ShieldCheck, label: "Fully insured & guaranteed work" },
     { icon: Award, label: "Free, no-obligation quotes" },
-    { icon: MapPin, label: "London, East Kent & Kent" },
+    { icon: MapPin, label: "Kent & Greater London" },
   ];
 
   return (
