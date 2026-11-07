@@ -1,7 +1,8 @@
 export const site = {
-  // Not registered yet — swap for the real moribuilders.co.uk once it's
-  // bought, so metadata, the sitemap and canonical URLs point at the live site.
-  url: "https://www.moribuilders.co.uk",
+  // Live at moribuilders.co.uk (Cloudflare Workers). Using the bare
+  // domain since that's what's actually deployed — add a www → bare
+  // redirect in Cloudflare if www.moribuilders.co.uk should also resolve.
+  url: "https://moribuilders.co.uk",
   name: "Mori Builders",
   shortName: "Mori Builders",
   tagline:
