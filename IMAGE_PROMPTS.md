@@ -1,67 +1,104 @@
 # Photo plan for the website
 
-The live site currently shows **sample placeholder photos** (via picsum.photos,
-labelled "Sample photo — replace" in the corner) so you can see the layout
-with real photographic content instead of empty boxes. Swap every one of
-these out before the site goes live — real project photos build far more
-trust (and rank better in local search) than stock or AI images ever will.
+The live site shows **sample photos** (real, freely-licensed construction
+photos from Pexels, labelled "Sample photo — replace" in the corner) so you
+can see the layout with real photographic content instead of empty boxes.
+Swap them out as you get real project photos — real photos build far more
+trust (and rank better in local search) than any stock or AI image.
 
-If you don't have enough real project photos yet, use the prompts below with
-an AI image generator (Midjourney, DALL·E 3 / ChatGPT, Adobe Firefly, or
-Stable Diffusion) as a temporary stand-in. Treat AI images as a placeholder
-upgrade, not a permanent solution — plan to photograph your next few jobs
-(before/during/after, on your phone is fine) and replace them as you go.
+If you don't have a real photo for a specific service yet, use the prompts
+below with an AI image generator (Midjourney, DALL·E / ChatGPT, Adobe
+Firefly, Stable Diffusion) as a temporary stand-in.
 
-## How to use these prompts
+## How to swap in a real photo — just drop the file in, no code changes
+
+Every photo slot auto-detects a matching file in `public/images/` at build
+time (see `src/lib/localPhoto.ts` and `src/lib/resolvePhotos.ts`). Add a
+photo named correctly and it replaces the sample automatically:
+
+| Slot | Folder | Filename |
+|---|---|---|
+| Homepage hero banner | `public/images/hero/` | `banner.jpg` |
+| "Project in progress" banner | `public/images/hero/` | `progress.jpg` |
+| About page team photo | `public/images/about/` | `team.jpg` |
+| A town page (e.g. `/areas/ashford`) | `public/images/areas/` | `<town-slug>.jpg` |
+| A service page (e.g. `/services/electrical`) | `public/images/services/` | `<service-slug>.jpg` |
+| A project card | `public/images/projects/` | `<project-slug>.jpg` (see that folder's `README.md`) |
+
+- `.jpg`, `.jpeg`, `.png` and `.webp` all work.
+- **Multiple photos on one project?** Add `-2`, `-3`, etc.: `<slug>-2.jpg`,
+  `<slug>-3.jpg` — they become a clickable gallery with a full-screen
+  lightbox automatically.
+- After adding files, run `npm run build` to check locally, then commit and
+  push — the GitHub Pages workflow redeploys automatically.
+
+## AI prompt tips
 
 - Add `, photorealistic, natural daylight, 35mm photography, no text, no watermark`
-  to any prompt if your generator adds artefacts.
+  if your generator adds artefacts.
 - Generate at a landscape ratio (4:3 or 3:2) to match the site's image slots.
-- Keep people out of close-up/face shots if you're using AI images — use
-  wide or back-of-frame shots of tradespeople to avoid uncanny faces.
-- Where a prompt mentions "UK", add a specific regional detail if you want
-  (e.g. "Kent ragstone", "weatherboard cottage", "London brick terrace") to
-  better match your actual house styles.
-
-## Where to swap each image in the code
-
-Every sample photo is rendered by `src/components/PlaceholderImage.tsx` and
-given a `seed` (used to pick a consistent sample photo) and a `label`
-(the description below, shown in the corner tag). To replace one with a real
-photo:
-
-1. Add your photo to `public/images/` (e.g. `public/images/extensions-1.jpg`).
-2. Swap the `PlaceholderImage` component for a plain `next/image` pointing at
-   `/images/extensions-1.jpg`, or extend `PlaceholderImage` to accept a
-   `src` override — either is a small change.
+- Keep people out of close-up/face shots — use wide or back-of-frame shots
+  of tradespeople to avoid uncanny faces.
+- All prompts below already specify "UK" — add a regional detail if you
+  want (e.g. "Kent ragstone", "London brick terrace") to match your area.
 
 ## Hero / homepage
 
-- **Hero banner** — `"A newly completed modern detached house in the Kent countryside, red brick and render finish, landscaped front garden, clear blue sky, late afternoon light, professional architectural photography"`
-- **"Project in progress" banner** — `"Two builders in hi-vis and hard hats working on a UK house extension site, scaffolding and building materials visible, daytime, documentary-style construction photography"`
+- **Hero banner** — `"A newly completed modern detached house exterior in the UK, daylight, landscaped front garden"`
+- **"Project in progress" banner** — `"A rear single storey house extension under construction with brickwork and bifold door frame, UK"`
 
-## Services
+## Services, by division
 
-1. **New Build Homes** — `"A newly completed modern detached house in the Kent countryside, red brick and render finish, landscaped front garden, clear blue sky, late afternoon light, professional architectural photography"`
-2. **House Extensions** — `"A rear single storey house extension with large bi-fold glass doors opening onto a landscaped garden, builders finishing brickwork, daytime natural light, UK residential architecture"`
-3. **Roof & Loft Conversions** — `"A roofer and carpenter working on a dormer loft conversion on a UK terraced house roof, scaffolding visible, clear daytime sky, wide angle construction photography"`
-4. **Renovation & Refurbishment** — `"Interior of a house mid-renovation, exposed brick wall being replastered, builder working with trowel, natural light through a window, UK home renovation site"`
-5. **Painting & Decorating** — `"A professional decorator in branded workwear painting an interior wall with a roller, drop sheets on the floor, bright freshly decorated room, UK home interior"`
-6. **Flooring** — `"Close-up of a tradesperson installing engineered wood flooring planks in a bright renovated living room, tools and offcuts nearby, natural daylight"`
-7. **General Building Works** — `"A builder laying bricks on a garden wall with a trowel and spirit level, mortar and bricks stacked nearby, outdoor UK residential setting, daylight"`
+### Roofing & Exterior Works
+1. **Roofing** — "A roofer working on a UK pitched roof, replacing tiles, scaffolding visible, clear daytime sky"
+2. **Windows & Doors** — "A tradesperson fitting a new uPVC window into a UK house exterior wall, daylight"
+3. **Conservatories** — "A modern glass garden room conservatory attached to a UK house, daylight, landscaped garden"
+4. **Fencing** — "A builder installing a timber garden fence panel in a UK back garden, daylight"
+5. **Driveways & Paving** — "A newly block-paved driveway outside a UK house, clean lines, daylight"
+6. **Fascias, Soffits & Guttering** — "A tradesperson on a ladder replacing guttering on a UK house roofline, daylight"
+7. **Chimney & Fireplace** — "A brick chimney stack being repointed on a UK rooftop, scaffolding, daylight"
+8. **Gardening & Landscaping** — "A landscaped UK garden with new turf and planting borders, daylight"
+
+### Building & Structural Works
+9. **New Build** — "A newly completed modern detached house exterior in the UK, daylight, landscaped front garden"
+10. **Extensions** — "A rear single storey house extension under construction with brickwork and bifold door frame, UK"
+11. **Loft Conversion** — "A dormer loft conversion being built on a UK terraced house roof, scaffolding, daylight"
+12. **Conversions** — "A converted garage turned into a home office in a UK house, finished interior, daylight"
+13. **Bricklaying & Repointing** — "A bricklayer laying bricks with a trowel and spirit level on a UK building site, daylight"
+14. **Groundwork & Foundations** — "Groundworks and foundation trenches being dug on a UK construction site, daylight"
+15. **Demolition & Clearance** — "Workers carrying out an internal strip-out demolition inside a UK house renovation, daylight"
+16. **Stonemasonry** — "A stonemason repairing stone detailing on a period UK building facade, daylight"
+17. **Architectural Services** — "Architectural house plans and drawings laid out on a desk with a pencil and ruler"
+
+### Kitchen & Bathroom Renovations
+18. **Kitchen Fitting** — "A tradesperson fitting kitchen cabinets and worktops in a UK home renovation, daylight"
+19. **Bathroom Fitting** — "A newly fitted modern UK bathroom with tiling and walk-in shower, daylight"
+
+### Interior Finishing & Renovation
+20. **Painting & Decorating** — "A decorator painting an interior wall with a roller in a freshly renovated UK room, daylight"
+21. **Carpentry & Joinery** — "A carpenter building fitted wardrobe storage in a UK home renovation, daylight"
+22. **Carpets, Lino & Flooring** — "A tradesperson installing engineered wood flooring in a bright renovated UK living room, daylight"
+23. **Tiling** — "A tiler laying floor tiles in a UK bathroom renovation, tools and tiles visible, daylight"
+24. **Plastering & Rendering** — "A plasterer applying fresh plaster to an interior wall in a UK home renovation, trowel in hand, daylight"
+25. **Insulation** — "A tradesperson installing loft insulation in a UK roof space, daylight through roof window"
+26. **Restoration & Refurbishment** — "Interior of a UK Victorian terraced house mid-renovation, exposed brick wall, natural light"
+
+### Plumbing, Electrical & Heating
+27. **Plumbing** — "A plumber working on pipework under a sink in a UK home, tools visible, daylight"
+28. **Electrical** — "An electrician testing a consumer unit/fuse box in a UK home, daylight"
+29. **Central Heating** — "A heating engineer servicing a boiler in a UK home utility room, tools and gauges visible"
+
+### Property Maintenance & Repairs
+30. **Handyman & General Maintenance** — "A handyman fixing a fitting in a UK home with a cordless drill, tool belt, daylight"
 
 ## Projects / portfolio
 
-1. **Rear Kitchen Extension, Ashford** — `"Finished open-plan kitchen extension with bi-fold doors onto garden, light wood flooring, modern UK kitchen, daylight"`
-2. **Dormer Loft Conversion, Canterbury** — `"New dormer loft conversion bedroom with ensuite, roof windows, neutral decor, UK terraced house interior"`
-3. **New Build Family Home, Folkestone** — `"Completed new build four bedroom detached house, brick and render exterior, driveway and landscaped front garden, UK suburb"`
-4. **Full Period Property Renovation, Maidstone** — `"Renovated Victorian terraced house living room with restored period features, exposed beams, fresh plaster, UK home interior"`
-5. **Exterior Repaint & Render, Whitstable** — `"Freshly painted coastal UK house exterior, pale blue render, clear sky, seaside town street"`
-6. **Engineered Wood Flooring Install, Bromley** — `"Bright open-plan London home with newly installed engineered oak flooring, modern furniture, daylight"`
+See `public/images/projects/README.md` for the exact filename to use per
+project — it's kept in sync with `src/data/projects.ts`.
 
 ## About page
 
-- **Team / site photo** — `"A small team of UK builders in branded hi-vis and hard hats standing together on a tidy house extension site, friendly and approachable, daytime, documentary-style photography"`
+- **Team / site photo** — "A small team of UK builders in branded hi-vis and hard hats standing together on a tidy site, friendly and approachable, daytime"
 
 ## Better than AI: a quick real-photo checklist
 
@@ -69,8 +106,8 @@ For every job going forward, grab these on your phone — it takes two minutes
 and is worth more than any AI image:
 
 - A "before" wide shot of the room/area, taken from the doorway.
-- 2–3 "during" shots showing the trade actually happening (brickwork,
-  plastering, a roofer on the roof, etc.) — these build the most trust.
-- A clean "after" shot, same angle as the "before" photo if possible,
-  taken in good daylight with clutter cleared.
+- 2–3 "during" shots showing the trade actually happening — these build the
+  most trust.
+- A clean "after" shot, same angle as the "before" photo if possible, in
+  good daylight with clutter cleared.
 - One photo of your van, tools, or team on site for the About/Projects pages.

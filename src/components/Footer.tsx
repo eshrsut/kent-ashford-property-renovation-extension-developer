@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { navLinks, site } from "@/data/site";
-import { services } from "@/data/services";
+import { divisions } from "@/data/divisions";
 import SocialLinks from "./SocialLinks";
 
 export default function Footer() {
@@ -24,13 +24,13 @@ export default function Footer() {
             Services
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
-            {services.slice(0, 6).map((service) => (
-              <li key={service.slug}>
+            {divisions.map((division) => (
+              <li key={division.slug}>
                 <Link
-                  href={`/services/${service.slug}`}
+                  href={`/services#${division.slug}`}
                   className="text-slate-400 hover:text-amber-400"
                 >
-                  {service.title}
+                  {division.title}
                 </Link>
               </li>
             ))}

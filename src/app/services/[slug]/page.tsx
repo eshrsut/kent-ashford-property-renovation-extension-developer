@@ -5,9 +5,9 @@ import { Check } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import PhotoGallery from "@/components/PhotoGallery";
 import ServiceIcon from "@/components/ServiceIcon";
-import { getServiceBySlug, services } from "@/data/services";
+import { getServiceBySlug, services, servicesByDivision } from "@/data/services";
+import { getDivisionBySlug } from "@/data/divisions";
 import { projects } from "@/data/projects";
-import { site } from "@/data/site";
 import { resolveGallery } from "@/lib/resolvePhotos";
 
 export function generateStaticParams() {
@@ -37,13 +37,17 @@ export default async function ServiceDetailPage({
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
+  const division = getDivisionBySlug(service.division);
   const relatedProjects = projects.filter((p) => p.serviceSlug === service.slug);
+  const siblingServices = servicesByDivision(service.division).filter(
+    (s) => s.slug !== service.slug
+  );
 
   const serviceGallery = resolveGallery({
     category: "services",
     slug: service.slug,
     alt: service.imagePrompt,
-    topic: service.slug,
+    topic: service.division,
     seed: `service-${service.slug}`,
   });
 
@@ -51,6 +55,14 @@ export default async function ServiceDetailPage({
     <>
       <section className="bg-slate-900">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-14 text-center sm:px-6">
+          {division && (
+            <Link
+              href={`/services#${division.slug}`}
+              className="text-sm font-semibold uppercase tracking-wide text-amber-400 hover:text-amber-300"
+            >
+              {division.title}
+            </Link>
+          )}
           <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-amber-500 text-slate-900">
             <ServiceIcon icon={service.icon} className="h-7 w-7" />
           </span>
@@ -107,7 +119,7 @@ export default async function ServiceDetailPage({
                   category: "projects",
                   slug: project.slug,
                   alt: project.imagePrompt,
-                  topic: project.serviceSlug,
+                  topic: getServiceBySlug(project.serviceSlug)?.division,
                   seed: `project-${project.slug}`,
                 });
                 return (
@@ -133,15 +145,14 @@ export default async function ServiceDetailPage({
         </section>
       )}
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Other services from {site.name}
-          </h2>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {services
-              .filter((s) => s.slug !== service.slug)
-              .map((s) => (
+      {siblingServices.length > 0 && (
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+            <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
+              Other {division?.title.toLowerCase()} services
+            </h2>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {siblingServices.map((s) => (
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
@@ -150,9 +161,16 @@ export default async function ServiceDetailPage({
                   {s.title}
                 </Link>
               ))}
+            </div>
+            <Link
+              href="/services"
+              className="mt-6 inline-block text-sm font-semibold text-amber-600"
+            >
+              View all {services.length} services →
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTASection />
     </>

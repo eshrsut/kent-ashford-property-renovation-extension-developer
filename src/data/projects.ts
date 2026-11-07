@@ -22,7 +22,7 @@ export const projects: Project[] = [
     slug: "canterbury-loft-conversion",
     title: "Dormer Loft Conversion",
     location: "Canterbury, Kent",
-    serviceSlug: "roof-loft-conversions",
+    serviceSlug: "loft-conversion",
     summary:
       "Dormer loft conversion adding a double bedroom and ensuite above an existing terraced house.",
     imagePrompt:
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     slug: "folkestone-new-build",
     title: "New Build Family Home",
     location: "Folkestone, Kent",
-    serviceSlug: "new-build-homes",
+    serviceSlug: "new-build",
     summary:
       "A four-bedroom new build family home completed from groundworks through to final landscaping.",
     imagePrompt:
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     slug: "maidstone-full-renovation",
     title: "Full Period Property Renovation",
     location: "Maidstone, Kent",
-    serviceSlug: "renovation-refurbishment",
+    serviceSlug: "restoration-refurbishment",
     summary:
       "A complete renovation of a Victorian terrace, including rewiring coordination, replastering and refurbished period features.",
     imagePrompt:
@@ -62,10 +62,40 @@ export const projects: Project[] = [
     slug: "bromley-flooring-install",
     title: "Engineered Wood Flooring Install",
     location: "Bromley, London",
-    serviceSlug: "flooring",
+    serviceSlug: "carpets-lino-flooring",
     summary:
       "Supply and installation of engineered oak flooring throughout the ground floor of a London semi-detached home.",
     imagePrompt:
       "Bright open-plan London home with newly installed engineered oak flooring, modern furniture, daylight",
+  },
+  {
+    slug: "dover-kitchen-fitting",
+    title: "Full Kitchen Refit",
+    location: "Dover, Kent",
+    serviceSlug: "kitchen-fitting",
+    summary:
+      "Complete kitchen refit including new units, worktops, splashback tiling and appliance installation.",
+    imagePrompt:
+      "A freshly fitted modern UK kitchen with new units and worktops, daylight",
+  },
+  {
+    slug: "dartford-central-heating",
+    title: "Boiler & Central Heating Upgrade",
+    location: "Dartford, Kent",
+    serviceSlug: "central-heating",
+    summary:
+      "Replacement boiler and upgraded radiators installed by a Gas Safe registered engineer.",
+    imagePrompt:
+      "A Gas Safe heating engineer installing a new boiler in a UK home utility room, daylight",
+  },
+  {
+    slug: "croydon-handyman-maintenance",
+    title: "Rental Property Maintenance Contract",
+    location: "Croydon, London",
+    serviceSlug: "handyman-maintenance",
+    summary:
+      "Ongoing maintenance contract for a letting agent, covering repairs across a portfolio of rental flats.",
+    imagePrompt:
+      "A handyman carrying out a repair in a UK rental flat, tool bag, daylight",
   },
 ];

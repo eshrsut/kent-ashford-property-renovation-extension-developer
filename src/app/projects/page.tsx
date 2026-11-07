@@ -36,7 +36,7 @@ export default function ProjectsPage() {
                 category: "projects",
                 slug: project.slug,
                 alt: project.imagePrompt,
-                topic: project.serviceSlug,
+                topic: service?.division,
                 seed: `project-${project.slug}`,
               });
               return (

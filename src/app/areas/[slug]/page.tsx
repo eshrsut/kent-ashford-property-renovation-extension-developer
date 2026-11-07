@@ -3,9 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin } from "lucide-react";
 import CTASection from "@/components/CTASection";
-import ServiceCard from "@/components/ServiceCard";
+import DivisionCard from "@/components/DivisionCard";
 import PhotoGallery from "@/components/PhotoGallery";
 import { getTownBySlug, towns } from "@/data/towns";
+import { divisions } from "@/data/divisions";
 import { services } from "@/data/services";
 import { site } from "@/data/site";
 import { resolveGallery } from "@/lib/resolvePhotos";
@@ -23,8 +24,8 @@ export async function generateMetadata({
   const town = getTownBySlug(slug);
   if (!town) return {};
   return {
-    title: `Builders in ${town.name} | New Builds, Extensions & Renovations`,
-    description: `${site.name} provides new build homes, extensions, roof conversions, renovations, painting and flooring in ${town.name}, ${town.area}. Free, no-obligation quotes.`,
+    title: `Builders in ${town.name} | Construction & Property Services`,
+    description: `${site.name} provides construction, renovation and property maintenance services in ${town.name}, ${town.area} — new builds, extensions, kitchens, bathrooms, roofing and more. Free, no-obligation quotes.`,
   };
 }
 
@@ -57,8 +58,10 @@ export default async function TownPage({
             Builders &amp; Renovation Specialists in {town.name}
           </h1>
           <p className="max-w-2xl text-slate-300">
-            New build homes, extensions, roof conversions, renovations,
-            painting and flooring for homeowners in and around {town.name}.
+            Construction, renovation and property maintenance — new builds,
+            extensions, kitchens, bathrooms, roofing, plumbing, electrical and
+            more — for homeowners, landlords and businesses in and around{" "}
+            {town.name}.
           </p>
         </div>
       </section>
@@ -101,11 +104,11 @@ export default async function TownPage({
       <section className="bg-slate-50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Services available in {town.name}
+            {services.length} services available in {town.name}
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {divisions.map((division) => (
+              <DivisionCard key={division.slug} division={division} />
             ))}
           </div>
         </div>

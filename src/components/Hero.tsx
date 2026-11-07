@@ -9,7 +9,7 @@ export default function Hero() {
     category: "hero",
     slug: "banner",
     alt: "Completed new build or renovation project photo",
-    topic: "new-build-homes",
+    topic: "building-structural",
     seed: "hero-new-build-home",
   });
 

@@ -17,6 +17,9 @@ and visitors can click any photo to view it full-screen.
 | Full Period Property Renovation, Maidstone | `maidstone-full-renovation.jpg` |
 | Exterior Repaint & Render, Whitstable | `whitstable-exterior-repaint.jpg` |
 | Engineered Wood Flooring Install, Bromley | `bromley-flooring-install.jpg` |
+| Full Kitchen Refit, Dover | `dover-kitchen-fitting.jpg` |
+| Boiler & Central Heating Upgrade, Dartford | `dartford-central-heating.jpg` |
+| Rental Property Maintenance Contract, Croydon | `croydon-handyman-maintenance.jpg` |
 
 Tips:
 - Landscape orientation, roughly 1200×900px or larger, works best.

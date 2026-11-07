@@ -3,10 +3,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
-import ServiceCard from "@/components/ServiceCard";
+import DivisionCard from "@/components/DivisionCard";
 import CTASection from "@/components/CTASection";
 import Testimonials from "@/components/Testimonials";
 import PhotoGallery from "@/components/PhotoGallery";
+import { divisions } from "@/data/divisions";
 import { services } from "@/data/services";
 import { regionOrder, serviceAreaSummary, townsByRegion } from "@/data/towns";
 import { site } from "@/data/site";
@@ -22,7 +23,7 @@ export default function Home() {
     category: "hero",
     slug: "progress",
     alt: "Project in progress — team on site photo",
-    topic: "extensions",
+    topic: "building-structural",
     seed: "site-progress-build",
   });
 
@@ -35,17 +36,18 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-              Everything from the first brick to the final coat of paint
+              {services.length} services across six trade divisions
             </h2>
             <p className="mt-3 text-slate-600">
-              New builds, extensions, roof conversions, renovations, flooring
-              and decorating — all managed under one roof.
+              From a leaking tap to a full new build — all managed under one
+              roof, with regulated work only carried out by qualified,
+              registered tradespeople.
             </p>
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {divisions.map((division) => (
+              <DivisionCard key={division.slug} division={division} />
             ))}
           </div>
         </div>
