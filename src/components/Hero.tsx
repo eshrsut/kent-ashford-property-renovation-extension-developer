@@ -21,7 +21,7 @@ export default function Hero() {
             {site.tagline}
           </p>
           <h1 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-            Builders you can trust, from new build to final finish.
+            {site.headline}
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base text-slate-300 sm:text-lg lg:mx-0">
             {site.description}

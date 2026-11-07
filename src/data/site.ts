@@ -1,12 +1,14 @@
 export const site = {
-  // Placeholder — replace with your real domain once you have one, so
-  // metadata, the sitemap and canonical URLs point at the live site.
-  url: "https://www.yourdomain.co.uk",
-  name: "Mori Developers",
-  shortName: "Mori Developers",
-  tagline: "New Builds, Extensions & Renovations across London, Kent & East Kent",
+  // Not registered yet — swap for the real moribuilders.co.uk once it's
+  // bought, so metadata, the sitemap and canonical URLs point at the live site.
+  url: "https://www.moribuilders.co.uk",
+  name: "Mori Builders",
+  shortName: "Mori Builders",
+  tagline:
+    "Multi-Trade Construction, Renovation & Property Maintenance Across Kent & London",
+  headline: "Building Better Spaces. Delivering Quality Work.",
   description:
-    "Family-run builders based in Ashford, Kent, delivering new build homes, extensions, roof conversions, renovations, painting and flooring across London, East Kent and the wider county.",
+    "Construction, renovation and property maintenance services across Kent and Greater London. From small repairs and property improvements to major extensions, conversions and complete refurbishments, Mori Builders brings together skilled tradespeople to deliver your project.",
   phone: "07810 458712",
   phoneHref: "tel:+447810458712",
   // wa.me requires the full international number with no leading 0, +, or spaces.

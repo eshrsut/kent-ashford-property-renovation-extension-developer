@@ -13,7 +13,7 @@ import { site } from "@/data/site";
 import { resolveGallery } from "@/lib/resolvePhotos";
 
 export const metadata: Metadata = {
-  title: `${site.name} | Builders in London, Kent & East Kent`,
+  title: `${site.name} | ${site.tagline}`,
   description: site.description,
 };
 
