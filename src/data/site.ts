@@ -16,10 +16,10 @@ export const site = {
   whatsappNumber: "447810458712",
   email: "anirudhsinh.mori@gmail.com",
   address: {
-    line1: "Unit 4, Orchard Business Park",
+    line1: "41 Hillview",
     line2: "Ashford",
     county: "Kent",
-    postcode: "TN24 0XX",
+    postcode: "TN24 8YE",
   },
   hours: "Mon–Fri 8:00–18:00, Sat 9:00–13:00",
   social: {
