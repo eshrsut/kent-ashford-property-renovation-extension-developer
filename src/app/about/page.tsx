@@ -80,7 +80,8 @@ export default function AboutPage() {
               surrounding towns.
             </p>
             <p className="mt-4 leading-relaxed text-slate-600">
-              We also bring direct experience working on listed buildings —
+              We also bring direct experience working on Grade II listed
+              buildings —
               carrying out sympathetic repairs and alterations that respect a
               property&apos;s character, meet Listed Building Consent
               requirements, and liaise with conservation officers where

@@ -554,14 +554,14 @@ export const services: Service[] = [
     title: "Restoration & Refurbishment",
     division: "interior-finishing",
     shortDescription:
-      "Full and part property renovations, including period and listed building restoration.",
+      "Full and part property renovations, including period and Grade II listed building restoration.",
     description: [
       "Whether you've bought a project that needs modernising or want to refresh a home you've lived in for years, we plan the works in a sequence that keeps disruption to a minimum.",
-      "We also have direct experience working on listed buildings, carrying out sympathetic repairs and alterations that respect the property's character and comply with Listed Building Consent requirements, and liaising with conservation officers where needed.",
+      "We also have direct experience working on Grade II listed buildings, carrying out sympathetic repairs and alterations that respect the property's character and comply with Listed Building Consent requirements, and liaising with conservation officers where needed.",
     ],
     bullets: [
       "Whole house renovations and refurbishments",
-      "Period and listed property restoration",
+      "Period and Grade II listed property restoration",
       "Listed Building Consent liaison and compliant alterations",
       "Internal wall removal and structural alterations",
       "Replastering and damp remediation",
