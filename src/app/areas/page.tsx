@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Areas We Cover",
-  description: `${site.name} covers London, East Kent and Kent, including Ashford, Canterbury, Folkestone, Maidstone, Tonbridge and Bromley. See every town we build and renovate in.`,
+  description: `${site.name} covers London, East Kent and Kent, including Ashford, Dover, Canterbury, Folkestone, Maidstone, Tonbridge and Bromley. See every town we build and renovate in.`,
 };
 
 export default function AreasPage() {
