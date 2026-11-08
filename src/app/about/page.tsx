@@ -79,6 +79,13 @@ export default function AboutPage() {
               projects based around our home patch of Ashford and the
               surrounding towns.
             </p>
+            <p className="mt-4 leading-relaxed text-slate-600">
+              We also bring direct experience working on listed buildings —
+              carrying out sympathetic repairs and alterations that respect a
+              property&apos;s character, meet Listed Building Consent
+              requirements, and liaise with conservation officers where
+              needed.
+            </p>
           </div>
         </div>
       </section>
