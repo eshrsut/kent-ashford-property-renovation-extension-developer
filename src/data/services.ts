@@ -412,14 +412,17 @@ export const services: Service[] = [
     title: "Bathroom Fitting",
     division: "kitchens-bathrooms",
     shortDescription:
-      "Full and part bathroom refits, including wet rooms and ensuite installations.",
+      "Full and part bathroom refits, including wet rooms, ensuites and extra WCs.",
     description: [
       "From a simple suite swap to a full wet room, we handle the plumbing, tiling, electrics and waterproofing needed for a bathroom that lasts.",
+      "We also fit additional WCs and downstairs toilets — converting an understairs cupboard, utility room or box room into extra bathroom space, including the drainage and plumbing runs needed to connect back to the existing soil stack.",
     ],
     bullets: [
       "Full bathroom suite installation",
       "Wet rooms and walk-in showers",
       "Ensuite bathroom fitting",
+      "Additional WCs and downstairs toilets",
+      "Understairs and box room WC conversions",
       "Tiling and waterproofing (tanking)",
       "Underfloor heating in bathrooms",
     ],

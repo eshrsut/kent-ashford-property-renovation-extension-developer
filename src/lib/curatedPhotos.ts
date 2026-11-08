@@ -12,6 +12,8 @@ export const curatedPhotos: Record<string, string[]> = {
     "https://images.pexels.com/photos/31763538/pexels-photo-31763538.jpeg",
     // Cotswold stone cottage re-roofing, England.
     "https://images.pexels.com/photos/37627331/pexels-photo-37627331.jpeg",
+    // Terraced houses with clay pantile roofs, UK.
+    "https://images.pexels.com/photos/39060800/pexels-photo-39060800.jpeg",
   ],
   "building-structural": [
     "https://images.pexels.com/photos/9969055/pexels-photo-9969055.jpeg",
@@ -19,10 +21,14 @@ export const curatedPhotos: Record<string, string[]> = {
     "https://images.pexels.com/photos/19688828/pexels-photo-19688828.jpeg",
     // High-rise site in Wakefield, England.
     "https://images.pexels.com/photos/9746797/pexels-photo-9746797.jpeg",
+    // New-build red-brick housing development, Farnham, England.
+    "https://images.pexels.com/photos/14078227/pexels-photo-14078227.jpeg",
   ],
   "kitchens-bathrooms": [
     "https://images.pexels.com/photos/15861553/pexels-photo-15861553.jpeg",
     "https://images.pexels.com/photos/7031617/pexels-photo-7031617.jpeg",
+    // Modern fitted kitchen, London.
+    "https://images.pexels.com/photos/19673895/pexels-photo-19673895.jpeg",
   ],
   "interior-finishing": [
     "https://images.pexels.com/photos/6474133/pexels-photo-6474133.jpeg",
