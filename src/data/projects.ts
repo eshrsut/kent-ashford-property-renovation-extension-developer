@@ -69,6 +69,16 @@ export const projects: Project[] = [
       "Bright open-plan London home with newly installed engineered oak flooring, modern furniture, daylight",
   },
   {
+    slug: "dover-listed-building-groundworks",
+    title: "Listed Building Groundworks & Underpinning",
+    location: "Dover, Kent",
+    serviceSlug: "groundwork-foundations",
+    summary:
+      "Major groundworks within the shell of a Grade II listed building, including excavation, reinforced concrete oversite slab and raker shoring to safely support the retained heritage walls during the works.",
+    imagePrompt:
+      "Real project photos supplied by the business — see public/images/projects/dover-listed-building-groundworks*.jpg",
+  },
+  {
     slug: "dover-kitchen-fitting",
     title: "Full Kitchen Refit",
     location: "Dover, Kent",
