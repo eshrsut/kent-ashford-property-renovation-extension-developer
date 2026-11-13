@@ -1,8 +1,7 @@
 export const site = {
-  // Live at moribuilders.co.uk (Cloudflare Workers). Using the bare
-  // domain since that's what's actually deployed — add a www → bare
-  // redirect in Cloudflare if www.moribuilders.co.uk should also resolve.
-  url: "https://moribuilders.co.uk",
+  // Live at moribuildcon.co.uk (Cloudflare Workers). The old
+  // moribuilders.co.uk domain 301-redirects here (see worker/index.ts).
+  url: "https://moribuildcon.co.uk",
   name: "Mori Build Con",
   shortName: "Mori Build Con",
   tagline:
