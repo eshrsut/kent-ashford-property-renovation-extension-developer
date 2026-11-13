@@ -3,13 +3,13 @@ export const site = {
   // domain since that's what's actually deployed — add a www → bare
   // redirect in Cloudflare if www.moribuilders.co.uk should also resolve.
   url: "https://moribuilders.co.uk",
-  name: "Mori Builders",
-  shortName: "Mori Builders",
+  name: "Mori Build Con",
+  shortName: "Mori Build Con",
   tagline:
     "Multi-Trade Construction, Renovation & Property Maintenance Across Kent & London",
   headline: "Building Better Spaces. Delivering Quality Work.",
   description:
-    "Construction, renovation and property maintenance services across Kent and Greater London. From small repairs and property improvements to major extensions, conversions and complete refurbishments, Mori Builders brings together skilled tradespeople to deliver your project.",
+    "Construction, renovation and property maintenance services across Kent and Greater London. From small repairs and property improvements to major extensions, conversions and complete refurbishments, Mori Build Con brings together skilled tradespeople to deliver your project.",
   phone: "07810 458712",
   phoneHref: "tel:+447810458712",
   // wa.me requires the full international number with no leading 0, +, or spaces.
