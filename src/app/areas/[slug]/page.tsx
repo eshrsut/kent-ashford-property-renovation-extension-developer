@@ -7,9 +7,20 @@ import DivisionCard from "@/components/DivisionCard";
 import PhotoGallery from "@/components/PhotoGallery";
 import { getTownBySlug, towns } from "@/data/towns";
 import { divisions } from "@/data/divisions";
-import { services } from "@/data/services";
+import { services, getServiceBySlug } from "@/data/services";
+import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 import { resolveGallery } from "@/lib/resolvePhotos";
+
+const regionFocus: Record<string, string> = {
+  "Ashford Area":
+    "Being based here ourselves, this is where we can usually get to site fastest and keep a closer eye on day-to-day progress — popular jobs include full renovations of the area's older cottages and village homes alongside modern extensions.",
+  "East Kent":
+    "Coastal and market-town properties here often need extra attention to roofing, render and exterior woodwork against the weather, alongside the usual extensions and renovations.",
+  Kent: "From Victorian terraces in the Medway towns to larger detached homes further out, we handle everything from single-room refits to full renovations.",
+  London:
+    "Space is often the main constraint on London properties, so loft conversions, rear extensions and side-return extensions are some of our most requested jobs in this area.",
+};
 
 export function generateStaticParams() {
   return towns.map((town) => ({ slug: town.slug }));
@@ -41,10 +52,18 @@ export default async function TownPage({
   const townPhoto = resolveGallery({
     category: "areas",
     slug: town.slug,
-    alt: `Completed project photo from ${town.name}`,
-    topic: "team",
+    alt: `Property in ${town.name}, ${town.area}`,
+    topic: "areas",
     seed: `town-${town.slug}`,
+    singleCurated: true,
   });
+
+  const localProject = projects.find((p) =>
+    p.location.toLowerCase().startsWith(town.name.toLowerCase())
+  );
+  const localProjectService = localProject
+    ? getServiceBySlug(localProject.serviceSlug)
+    : undefined;
 
   return (
     <>
@@ -85,6 +104,21 @@ export default async function TownPage({
               repainted and the floor replaced, get in touch for a free,
               no-obligation quote.
             </p>
+            <p className="mt-4 leading-relaxed text-slate-600">
+              {regionFocus[town.region]}
+            </p>
+            {localProject && localProjectService && (
+              <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-slate-700">
+                Recent work in {town.name}:{" "}
+                <Link
+                  href={`/services/${localProjectService.slug}`}
+                  className="font-semibold text-amber-700 underline underline-offset-2"
+                >
+                  {localProject.title}
+                </Link>{" "}
+                — {localProject.summary}
+              </p>
+            )}
             <Link
               href="/contact"
               className="mt-6 inline-flex rounded-md bg-amber-500 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-amber-400"

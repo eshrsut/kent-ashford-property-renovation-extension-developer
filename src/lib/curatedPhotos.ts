@@ -53,6 +53,25 @@ export const curatedPhotos: Record<string, string[]> = {
     "https://images.pexels.com/photos/35253961/pexels-photo-35253961.jpeg",
     "https://images.pexels.com/photos/18111292/pexels-photo-18111292.jpeg",
   ],
+  // Confirmed UK house/street exteriors for the /areas/[slug] town pages —
+  // varied per town (see resolvePhotos.ts) so nearby town pages don't all
+  // show the same single image.
+  areas: [
+    // Contemporary new-build house, Poole.
+    "https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg",
+    // Tudor-style home, Oxford.
+    "https://images.pexels.com/photos/37978204/pexels-photo-37978204.jpeg",
+    // Victorian terraced houses, Oxford.
+    "https://images.pexels.com/photos/35402056/pexels-photo-35402056.jpeg",
+    // Cotswold stone cottage, rural England.
+    "https://images.pexels.com/photos/33137596/pexels-photo-33137596.jpeg",
+    // Loft/dormer extension at dusk, London.
+    "https://images.pexels.com/photos/13491115/pexels-photo-13491115.jpeg",
+    // Cotswold stone buildings, England.
+    "https://images.pexels.com/photos/28111458/pexels-photo-28111458.jpeg",
+    // Tudor-style red brick terrace, England.
+    "https://images.pexels.com/photos/27094334/pexels-photo-27094334.jpeg",
+  ],
 };
 
 export function curatedPhotosFor(topic: string): string[] {
