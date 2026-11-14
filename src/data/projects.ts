@@ -69,6 +69,16 @@ export const projects: Project[] = [
       "Bright open-plan London home with newly installed engineered oak flooring, modern furniture, daylight",
   },
   {
+    slug: "ashford-patio-paving",
+    title: "Garden Patio Replacement",
+    location: "Ashford, Kent",
+    serviceSlug: "driveways-paving",
+    summary:
+      "Clearance of old cracked paving slabs and a full patio rebuild with large-format porcelain slabs, including new steps built into the garden's retaining wall and a gravel border finish.",
+    imagePrompt:
+      "Real project photos supplied by the business — see public/images/projects/ashford-patio-paving*.jpg",
+  },
+  {
     slug: "ashford-block-paving",
     title: "Block Paving Driveway",
     location: "Ashford, Kent",
