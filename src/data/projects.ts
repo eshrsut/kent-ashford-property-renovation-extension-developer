@@ -69,6 +69,26 @@ export const projects: Project[] = [
       "Bright open-plan London home with newly installed engineered oak flooring, modern furniture, daylight",
   },
   {
+    slug: "ashford-block-paving",
+    title: "Block Paving Driveway",
+    location: "Ashford, Kent",
+    serviceSlug: "driveways-paving",
+    summary:
+      "A full block paving driveway replacement, laid in a mixed charcoal and red brindle pattern with a new sand-jointed finish.",
+    imagePrompt:
+      "Real project photos supplied by the business — see public/images/projects/ashford-block-paving*.jpg",
+  },
+  {
+    slug: "dover-slate-roofing",
+    title: "Slate Re-Roof with Dormer",
+    location: "Dover, Kent",
+    serviceSlug: "roofing",
+    summary:
+      "A full slate re-roof including new roof windows and a dormer, finished with lead flashing detail and a breather membrane underlay throughout.",
+    imagePrompt:
+      "Real project photos supplied by the business — see public/images/projects/dover-slate-roofing*.jpg",
+  },
+  {
     slug: "dover-listed-building-groundworks",
     title: "Listed Building Groundworks & Underpinning",
     location: "Dover, Kent",
